@@ -7,21 +7,19 @@ const loader = document.getElementById('loader');
 
 // let apiQuotes = [];
 
-// Show Loading
-function loading() {
+function showLoadingSpinner() {
     loader.hidden = false;
     quoteContainer.hidden = true;
 }
 
-// Hide loading
-function complete() {
+function removeLoadingSpinner() {
     quoteContainer.hidden = false;
     loader.hidden = true;
 }
 
 //Show New Quotes
 function newQuote() {
-    loading();
+    showLoadingSpinner();
     // pick a random quote from localQuotes array
     const quote = localQuotes[Math.floor(Math.random() * localQuotes.length)];
    // Check if Author field is blank and replace it with 'Unknown'
@@ -36,9 +34,9 @@ function newQuote() {
    }else{
     quoteText.classList.remove('long-quote');
    }
-   // Set Quote, Hide Loader
+   // Set Quote, Hide Loader Spinner
     quoteText.textContent = quote.text;
-    complete();
+    removeLoadingSpinner();
 }
 
 // Tweet Quote
